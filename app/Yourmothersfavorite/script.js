@@ -20,6 +20,15 @@ if (username !== "") {
     alert('Bitte erst Nutzernamen eingeben');
 }
 
+
+
+
+$("#senden").click(function(){
+var nachricht = $('input[name=checkListItemMessage]').val();
+$("#chatbox").append('<div class="item">' + username + ": " + nachricht + '</div>');
+
+});
+
 });
 
 
