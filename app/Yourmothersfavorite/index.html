@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Chat </title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="script.js"></script>
+</head>
+
+
+    <dialog open id="dialog">
+
+    <div id="popup">
+        <div id="popup_inhalt">
+            <h2>Willkommen im Chat!</h2>
+            <p id="dialogtext"> Gib hier deinen Benutzernamen ein! </p>
+            <form name="checkListForm">
+            <input type="text" name="checkListItem"/> <div id="button"><p> Zum Chat!</p></div>
+        </form> 
+ 
+    </div>
+    </div>
+
+    </dialog>
+
+
+
+
+
+
+
+ <body>
+ <a href="popup.html" class="popup_oeffnen">Popup &ouml;ffnen</a>
+<div id="wrapper">
+    <div id="menu">
+        <p class="welcome">Welcome, <b></b></p>
+        <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+        <div style="clear:both"></div>
+    </div>
+     
+    <div id="chatbox"></div>
+     
+    <form name="message" action="">
+        <input name="usermsg" type="text" id="usermsg" size="63" />
+        <input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
+    </form>
+</div>
+</body>
+</html>
