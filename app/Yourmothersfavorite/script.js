@@ -25,7 +25,7 @@ if (username !== "") {
 
 $("#senden").click(function(){
 var nachricht = $('input[name=checkListItemMessage]').val();
-$("#chatbox").append('<div class="item">' + username + ": " + nachricht + '</div>');
+	$("#chatbox").append('<div class="item">' + username + ": " + nachricht + '</div>');
 
 });
 
