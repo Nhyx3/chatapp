@@ -12,6 +12,12 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/chatroom', function (req, res) {
+    var data = fs.readFileSync('./view/Chatroom.html').toString();
+    res.status(200).send(data);
+
+});
+
 var server = app.listen(3000, function () {
   var host = "localhost";
   var port = server.address().port;

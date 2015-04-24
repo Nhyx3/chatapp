@@ -45,6 +45,7 @@ body {
 	width: 80%;
 	height: 80%;
 	float: left;
+	background-color: red;
 	
 	
 }
@@ -140,6 +141,22 @@ border-radius: 5px;
 	background-color: red;
 }
 
+#usermsg {
+    width:395px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:12.5px 25px 12.5px 25px; }
+  
+.welcome { float:left; }
+  
+.logout { float:right; }
+  
+.msgln { margin:0 0 2px 0; }
+
 #popup {
     /*display: none; */
     z-index: 2;
@@ -161,7 +178,7 @@ border-radius: 5px;
 }
 
 
-#buttonA {
+#button {
     display: inline-block;
     height:20px;
     width:120px;
