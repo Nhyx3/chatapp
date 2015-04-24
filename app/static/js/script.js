@@ -6,6 +6,7 @@ var nachricht =""
 var userName = ""
 
 $(document).ready(function(){
+	$("#userName").focus();
 	$('input').focus(function() {
     	$(this).css('outline-color', 'red');
     });
@@ -39,11 +40,6 @@ $(document).ready(function(){
 
 
 
-	/*$("#senden").click(function(){
-		var nachricht = $('#message').val();
-		$("#chatbox").append('<div class="item">' + userName + ": " + nachricht + '</div>');
-		$("input").val(' ');
-	}); */
 
 	$("#exit").click(function(){
 		window.top.close();
@@ -64,10 +60,12 @@ function popup () {
 	   alert('Bitte erst Nutzernamen eingeben');
 			return;
 	}
-
+	else{
 	alert('Viel Fun beim Chatten ' + userName);
 	console.log("closing dialog");
 	dialog.close();
+	$("#message").focus();
+	}	
 };
 
 	function schreiben () {
