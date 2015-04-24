@@ -183,7 +183,7 @@ form {
     border-radius: 5px;
 }
 
-.userliste {
+.rechteSpalte {
     width: 20%;
     height: 80%;
     float:right;
@@ -198,6 +198,17 @@ form {
     margin-top: 4%;
     border-radius: 5px;
     border: 1px solid black;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#userListe{
+    width: 80%;
+    height: 70%;
+    
+    overflow: scroll;
+    margin-left: 20px;
+
 }
 
 .fusszeile {

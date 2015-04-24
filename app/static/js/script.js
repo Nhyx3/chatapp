@@ -43,6 +43,8 @@ $(document).on('submit', '#userForm', function (event) {
 return false;
 });
 
+
+
 });
 
 
@@ -61,7 +63,11 @@ dialog.close();
 
 $('#message').attr("disabled", false);
 $('#message').focus(); 
+
+$('#userListe').append(userName);
 }
+
+$("#chatbox").append('Charles: '+userName + ' ist dem Chat beigetreten');
 
 };
 
