@@ -1,38 +1,61 @@
 function zeigeFenster() {
-	  dialog.showModal();
-	};
+	 dialog.showModal();
+};
 
-
+//var nachricht =""
+var userName = ""
 
 $(document).ready(function(){
- $('input').focus(function() {
-     $(this).css('outline-color', 'red');
+	$('input').focus(function() {
+    	$(this).css('outline-color', 'red');
     });
 
 
-$("#button").click(function(){
-var username = $('input[name=checkListItem]').val();
+	$("#button").click(function(event) {
+		popup();
+	});
 
-if (username !== "") {
-    alert('Viel Fun beim Chatten ' + username);
-    dialog.close();
-} else {
-    alert('Bitte erst Nutzernamen eingeben');
-}
+	$("#userName").keydown(function (event) {
+		if (event.which !== 13) {
+			return;
+		}
+
+		popup();
+	});
 
 
 
 
-$("#senden").click(function(){
-var nachricht = $('input[name=checkListItemMessage]').val();
-$("#chatbox").append('<div class="item">' + username + ": " + nachricht + '</div>');
+
+
+
+	$("#senden").click(function(){
+		var nachricht = $('#message').val();
+		$("#chatbox").append('<div class="item">' + userName + ": " + nachricht + '</div>');
+		$("input").val(' ');
+	}); 
+
+	$("#exit").click(function(){
+		window.top.close();
+
+	});
+
+	$(document).on('submit', '#userForm', function (event) {
+		return false;
+	});
 
 });
 
-});
 
 
+function popup () {
+	userName = $('#userName').val();
+	if (userName === "") {
+	   alert('Bitte erst Nutzernamen eingeben');
+			return;
+	}
 
-});
-
-
+	alert('Viel Fun beim Chatten ' + userName);
+	console.log("closing dialog");
+	dialog.close();
+};
