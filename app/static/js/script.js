@@ -72,6 +72,11 @@ function popup () {
 
 	function schreiben () {
 		nachricht = $('#message').val();
+		if (nachricht === "") {
+			console.log("leer");
+			return;
+		}
+		console.log("nicht leer");
 		$("#chatbox").append('<div class="item">' + userName + ": " + nachricht + '</div>');
-		$("input").val(' ');
+		$("input").val("");	
 	};	
