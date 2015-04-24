@@ -56,10 +56,9 @@ a {
 .msgln { margin:0 0 2px 0; }
 
 
-/*popup */
+#dialog {
 
-#popup {
-    /*display: none; */
+    
     z-index: 2;
     position: fixed;
     width:450px;
