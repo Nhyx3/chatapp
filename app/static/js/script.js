@@ -35,13 +35,15 @@ popup();
 });
 
 $("#exit").click(function(){
-window.top.close();
+$('#userListe').remove(userName);
 
 });
 
 $(document).on('submit', '#userForm', function (event) {
 return false;
 });
+
+
 
 
 
@@ -69,10 +71,28 @@ $('#userListe').append(userName);
 
 $("#chatbox").append('Charles: '+userName + ' ist dem Chat beigetreten');
 
+
 };
 
 function schreiben () {
 nachricht = $('#message').val();
-$("#chatbox").append('<div class="item">' + userName + ": " + nachricht + '</div>');
+if (nachricht === "" ) {
+	
+}
+
+
+var url = "";
+if (nachricht === "charles.logout") {
+	location.reload();
+}
+else{
+
+	$("#chatbox").append('<div class="item">' + userName + ": " + nachricht + '</div>');
 $("input").val("");
+
+
+}
 };
+
+f
+

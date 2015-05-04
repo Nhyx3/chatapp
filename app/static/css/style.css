@@ -3,7 +3,7 @@ body {
     text-align: left;
     width :100%;
     height: 100%;
-    background-color: black;
+    background-color: #F5FBEF;
 }
   
 form, p, span {
@@ -21,12 +21,14 @@ a {
     padding-bottom: 16px; }
   
     a:hover { text-decoration:none; }
+    a:visited { color:white;
+                 }
   
 #wrapper, #loginform {
     
    width: 1400px;
     height: 750px;
-    background-color: #00BFFF;  
+    background-color: #CBC9C9; 
     margin-left: auto;
     margin-right: auto; }
   
@@ -39,17 +41,20 @@ a {
     width: 80%;
     height: 80%;
     float: left;
+    display: inline-block;
 }
   
 #chatbox {
     position: relative;
-    width: 98%;
+    width: 93.5%;
     height: 83%;
     background-color: white;
-    margin-left: 1%;
+    margin-left: 5.5%;
     margin-top: 1%;
     margin-right: 1%;
-    border-radius: 5px;
+    border-top-left-radius:  5px;
+    border-bottom-left-radius: 5px;
+
     border: 1px solid black;
     padding-left: 10px;
     overflow:auto; }
@@ -67,7 +72,7 @@ a {
     width: 1400px;
     height: 10%;
     position: relative;
-    background-color: #01A9DB;
+    background-color: #B5B5B5;
     text-align: center;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px; }
@@ -80,12 +85,16 @@ margin-bottom: 20px;}
   
 .logout { text-align: center;
         text-decoration: none;
-        font-color: solid black;
         margin-top: 15px;
+        font-weight: bold;
  }
 
  .logout:hover{
     text-decoration: blink;
+ }
+
+ .logout:visited{
+    color: white; 
  }
   
 .msgln { margin:0 0 2px 0; }
@@ -120,6 +129,7 @@ h2 {
 form {
     display: inline-block;
     float:left;
+    width: 80%;
     margin-bottom: 10px; 
     margin-left: 60px;
 
@@ -139,7 +149,7 @@ form {
     float: right; 
     display:table;
     margin-bottom: 10px;
-    margin-left: 25px;
+    margin-left: 0px;
   
 }
 
@@ -167,7 +177,7 @@ form {
     text-align:center;
     margin-top:2px;
     float: right; 
-    display:table;
+    margin-top: 20px;
     margin-bottom: 10px;
     margin-left: 25px;
   
@@ -175,11 +185,10 @@ form {
 
 #message{
     display: inline-block;
-    width: 80%;
-    max-width: 80%;
-    max-height: 47px;
-    margin-left: ;
-    margin-top: ;
+    width: 100%;
+    
+    margin-right: 200px ;
+    margin-top: 20px;
     border-radius: 5px;
 }
 
@@ -191,12 +200,13 @@ form {
 }
 
 .users {
-    width: 95%;
-    height: 96%;
+    width: 92%;
+    height: 81.25%;
     background-color: white;
-    margin-left: 2%;
+    margin-left: 0%;
     margin-top: 4%;
-    border-radius: 5px;
+    border-bottom-right-radius:  5px;
+    border-top-right-radius: 5px;
     border: 1px solid black;
     padding-left: 10px;
     padding-top: 10px;
@@ -214,10 +224,10 @@ form {
 .fusszeile {
     width: 100%;
     height: 10%;
-    background-color: #01A9DB;
+    background-color: #B5B5B5;
     clear: both;
     border-bottom-right-radius:  5px;
-    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
 
 
 }
@@ -229,9 +239,13 @@ form {
     margin-top: 10px;
     margin-bottom: auto;
     margin-right: 5%;
-    background-color: red;
+    background-color: #cc0000;
     border-radius: 5px;
     text-align: center;
+    font-color: white;
 
 
+}
+.users h2 {
+    text-decoration: underline;
 }
