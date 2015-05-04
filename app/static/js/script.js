@@ -81,18 +81,17 @@ if (nachricht === "" ) {
 }
 
 
-var url = "";
+/*var url = "";
 if (nachricht === "charles.logout") {
 	location.reload();
-}
+}*/
 else{
 
 	$("#chatbox").append('<div class="item">' + userName + ": " + nachricht + '</div>');
 $("input").val("");
 
-
 }
 };
 
-f
+
 
