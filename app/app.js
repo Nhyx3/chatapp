@@ -4,6 +4,7 @@ var fs = require('fs');
 var app = express();
 var bodyParser = require('body-parser');
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -11,33 +12,51 @@ app.use("/css", express.static('./static/css'));
 app.use("/js", express.static('./static/js'));
 app.use("/pictures", express.static('./static/pictures'));
 
-var messages = [];
 
+var messages = [];
+var users = [];
+
+
+// default route
 app.get('/', function (req, res) {
     var data = fs.readFileSync('./view/index.html').toString();
     res.status(200).send(data);
-
 });
 
 
-app.get('/getmessages', function (req, res) {
+// messages routes
+app.get('/messages', function (req, res) {
 	res.status(200).send(messages);
-	console.log(req.body);
 });
-
-
 
 app.post('/messages', function (req, res) {
 	messages.push(req.body);
-
-});
-
-app.post('/newuser', function (req, res) {
-	messages.push(req.body);
-	
+	console.log(req.body);
+	res.send(200);
 });
 
 
+// users routes
+app.get('/users', function (req, res) {
+	res.status(200).send(users);
+});
+
+app.post('/users', function (req, res) {
+	users.push(req.body.name);
+	res.send(200);
+});
+
+app.delete('/users/:id', function (req, res) {
+	var index = users.indexOf(req.params.id);
+	if (index > -1) {
+	    users.splice(index, 1);
+	}
+
+	res.send(200);
+});
+
+
+// start server
 var server = app.listen(3000, function () {
   var host = "localhost";
   var port = server.address().port;
