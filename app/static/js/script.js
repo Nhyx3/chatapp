@@ -1,6 +1,7 @@
 var nachricht = "";
 var userName = "";
 var pollingInterval;
+var cmessages = [];
 
 $(document).ready(function() {
 
@@ -69,8 +70,32 @@ function login () {
 	}
 
 	$("#chatbox").append('Charles: '+userName + ' ist dem Chat beigetreten');
+	var data = {
 
+		charles: ('Charles: '+userName + ' ist dem Chat beigetreten');
+	}
+	$.ajax({
+		type: "POST",
+		url: "/newuser",
+		data: data
+	});
+
+	//neue nachrichten checken
 	pollingInterval = setInterval(function () {
+		$.ajax({
+		type: "GET",
+		url: "/getmessages",
+		success: function(data){
+			var i = cmessages.length;
+			while(cmessages.length < data.length){
+
+				$("#chatbox").append('<div class="item">' + data[i].user + ": " + data[i].text + '</div>');
+				cmessages.push(data[i].text);
+				i++;
+			};			
+		},
+		error: function(data){console.log("Error")}
+	});
 
 	}, 1000);
 
@@ -84,6 +109,7 @@ function schreiben () {
 	}
 
 	$("#chatbox").append('<div class="item">' + userName + ": " + nachricht + '</div>');
+	cmessages.push(nachricht);
 	$("input").val("");
 
 	var data = {
@@ -97,12 +123,8 @@ function schreiben () {
 		data: data
 	});
 
-	/*
-	var url = "";
-	if (nachricht === "charles.logout") {
-		location.reload();
-	}
-	*/
+
+
 };
 
 

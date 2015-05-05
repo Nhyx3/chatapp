@@ -19,15 +19,24 @@ app.get('/', function (req, res) {
 
 });
 
-app.get('/chatroom', function (req, res) {
-    var data = fs.readFileSync('./view/Chatroom.html').toString();
-    res.status(200).send(data);
 
+app.get('/getmessages', function (req, res) {
+	res.status(200).send(messages);
+	console.log(req.body);
 });
+
+
 
 app.post('/messages', function (req, res) {
 	messages.push(req.body);
+
 });
+
+app.post('/newuser', function (req, res) {
+	messages.push(req.body);
+	
+});
+
 
 var server = app.listen(3000, function () {
   var host = "localhost";
