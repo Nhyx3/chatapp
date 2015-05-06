@@ -10,8 +10,8 @@ var Chat = (function (){
 
 		init: function () {
 
-			// init
-			$('#userName').focus();
+			// setup
+			$('#user-name').focus();
 			$('#message').attr('disabled', true);
 			$('input').focus(function() {
 				$(this).css('outline-color', 'red');
@@ -19,22 +19,19 @@ var Chat = (function (){
 
 
 			// login handlers
-			$('#button').click(function(event) {
+			$('#login').click(function(event) {
 				fn.login();
 			});
-			$('#userName').keydown(function (event) {
+			$('#user-name').keydown(function (event) {
 				if (event.which !== 13) {
 					return;
 				}
 				fn.login();
 			});
-			$(document).on('submit', '#userForm', function (event) {
-				return false;
-			});
 
 
 			// message handlers
-			$('#senden').click(function(event) {
+			$('#send').click(function(event) {
 				fn.sendMessage();
 			});
 			$('#message').keydown(function (event) {
@@ -49,14 +46,14 @@ var Chat = (function (){
 
 
 			// logout handlers
-			$('#exit').click(function(){
+			$('#logout').click(function(){
 				fn.logout();
 			});
 		},
 
 		login: function () {
 
-			currentUser = $('#userName').val();
+			currentUser = $('#user-name').val();
 			if (currentUser === '') {
 				alert('Bitte erst Nutzernamen eingeben');
 				return;
@@ -72,14 +69,13 @@ var Chat = (function (){
 			fn.refreshChatLog();
 			fn.sendMessage('Charles', currentUser + ' ist dem Chat beigetreten');
 
-			fn.appendToUserList(currentUser);
-
 			$.ajax({
 				type: 'POST',
 				url: '/users',
 				data: {
 					name: currentUser
-				}
+				},
+				success: fn.refreshUserList
 			});
 
 			pollingInterval = setInterval(function () {
@@ -90,13 +86,12 @@ var Chat = (function (){
 		},
 
 		logout: function () {
-
 			$.ajax({
 				type: 'DELETE',
 				url: '/users/' + currentUser
 			});
 
-			$('#userListe').remove(currentUser);
+			location.reload();
 		},
 
 		refreshChatLog: function () {
@@ -109,7 +104,7 @@ var Chat = (function (){
 						return;
 					}
 
-					$('#chatbox').html('');
+					$('#chat-log').html('');
 					messages = [];
 
 					for (var i in data) {
@@ -132,7 +127,7 @@ var Chat = (function (){
 						return;
 					}
 
-					$('#userListe').html('');
+					$('#user-list').html('');
 					users = [];
 
 					for (var i in data) {
@@ -169,29 +164,23 @@ var Chat = (function (){
 				text:      text,
 				timestamp: formattedTime
 			};
-
-			fn.appendToChatLog(data);
 			
 			$.ajax({
 				type: 'POST',
 				url: '/messages',
-				data: data
+				data: data,
+				success: fn.refreshChatLog
 			});
 
 		},
 
 		appendToChatLog: function (message) {
-			console.log(message.timestamp);
-
-			
-
-			
-			$('#chatbox').append('<div class="item">[' + message.timestamp + '] ' + message.user + ': ' + message.text + '</div>');
+			$('#chat-log').append('<div>[' + message.timestamp + '] ' + message.user + ': ' + message.text + '</div>');
 			messages.push(message);
 		},
 
 		appendToUserList: function (user) {
-			$('#userListe').append('<div class="item">' + user + '</div>');
+			$('#user-list').append('<div>' + user + '</div>');
 			users.push(user);
 		}
 	};
@@ -201,5 +190,5 @@ var Chat = (function (){
 })();
 
 $(document).ready(function() {
-	Chat.init()
+	Chat.init();
 });

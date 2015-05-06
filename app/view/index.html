@@ -1,65 +1,70 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="de">
 <head>
-<title>Chat </title>
-<link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chat </title>
+
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+
+    <div class="container">
+
+        <div class="row" id="chat">
+            <div class="col-md-1">
+                <img src="/img/java.png" id="java-logo">
+            </div>
+            <div class="col-md-9">
+                <h1 id="greeting">Willkommen im Mainfranken-Chat &nbsp;(:</h1>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-lg btn-danger" id="logout">Logout</button>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row" id="chat">
+            <div class="col-md-10">
+                <div id="chat-log"></div>
+            </div>
+            <div class="col-md-2">
+                <div id="user-list"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <input type="text" id="message" class="form-control" placeholder="Nachricht" autofocus="autofocus">
+            </div>
+            <div class="col-md-2">
+                <button type="button" id="send" class="btn btn-primary">Senden</button>
+            </div>
+        </div>
+    </div>
     
     <dialog open id="dialog">
-        <div id="popup">
-            <div id="popup_inhalt">
-                <h2>Willkommen im Chat!</h2>
-                <p id="dialogtext"> Gib hier deinen Benutzernamen ein! </p>
-                <form id="userForm">
-                <input type="text" id="userName"/>
-                <div id="button"><p> Zum Chat!</p></div>
-            </form> 
-     
-        </div>
-    </div>
+        <h4>Gib deinen Namen ein!</h4>
 
+        <br>
+
+        <div id="popup" class="row">
+            <div class="col-md-8">
+                <input type="text" id="user-name" class="form-control" placeholder="Name" autofocus="autofocus">
+            </div>
+            <div class="col-md-2">
+                <button type="button" id="login" class="btn btn-primary">Zum Chat!</button>
+            </div>
+
+        </div>
     </dialog>
-    
-
-    <div id="wrapper">
-    
-         <div id="menu">
-            <p class="welcome">Welcome to our Chat  <b></b></p>
-            <div class="exitDiv">
-            <p class="logout"><a id="exit" href="">Logout</a></p>
-            </div>
-            <div style="clear:both"></div>
-        </div>
-         
-        <div class="chatfeld">
-            <div id="chatbox"></div>
-
-            <form id="löschen">
-                <input type="text" id="message"/> 
-                
-            </form>
-            <div id="senden"><p> Senden!</p></div>
-        </div>
-
-        <div class="rechteSpalte">
-            <div class="users">
-                <h2>Angemeldete User</h2>
-                <div id="userListe">
-                </div>
-            </div>
-        </div>
-
-        <div class="fusszeile">
-
-        </div>
-    </div>
-
-   
-
-
 
     <script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
 </body>
 </html>

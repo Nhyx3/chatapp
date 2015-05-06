@@ -9,12 +9,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use("/css", express.static('./static/css'));
+app.use("/img", express.static('./static/img'));
 app.use("/js", express.static('./static/js'));
-app.use("/pictures", express.static('./static/pictures'));
 
 
 var messages = [];
-var users = [];
+var users = ['Charles'];
 
 
 // default route
@@ -31,7 +31,6 @@ app.get('/messages', function (req, res) {
 
 app.post('/messages', function (req, res) {
 	messages.push(req.body);
-	console.log(req.body);
 	res.send(200);
 });
 
