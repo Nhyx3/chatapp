@@ -64,6 +64,8 @@ var Chat = (function (){
 				return;
 			}
 
+			currentUser = fn.escapeHtml(currentUser);
+
 			alert('Viel Fun beim Chatten ' + currentUser);
 			dialog.close();
 
