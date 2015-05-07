@@ -1,7 +1,7 @@
 var Chat = (function (){
 
 	var currentUser = '';
-	var pollingInterval = null;
+	var pollingTimeout = null;
 
 	var users = [];
 	var messages = [];
@@ -16,6 +16,7 @@ var Chat = (function (){
 			$('input').focus(function() {
 				$(this).css('outline-color', 'red');
 			});
+			fn.startPolling();
 
 
 			// login handlers
@@ -52,10 +53,14 @@ var Chat = (function (){
 		},
 
 		login: function () {
-
 			currentUser = $('#user-name').val();
 			if (currentUser === '') {
-				alert('Bitte erst Nutzernamen eingeben');
+				alert('Gib erst deinen Namen ein!');
+				return;
+			}
+
+			if (users.indexOf(currentUser) !== -1) {
+				alert('Dieser Name wird schon verwendet!');
 				return;
 			}
 
@@ -67,7 +72,7 @@ var Chat = (function (){
 
 
 			fn.refreshChatLog();
-			fn.sendMessage('Charles', currentUser + ' ist dem Chat beigetreten');
+			fn.sendMessage('Charles', currentUser + ' ist dem Chat beigetreten.');
 
 			$.ajax({
 				type: 'POST',
@@ -77,12 +82,6 @@ var Chat = (function (){
 				},
 				success: fn.refreshUserList
 			});
-
-			pollingInterval = setInterval(function () {
-				fn.refreshChatLog();
-				fn.refreshUserList();
-			}, 1000);
-
 		},
 
 		logout: function () {
@@ -90,6 +89,8 @@ var Chat = (function (){
 				type: 'DELETE',
 				url: '/users/' + currentUser
 			});
+
+			fn.sendMessage('Charles', currentUser + ' hat den Chat verlassen.');
 
 			location.reload();
 		},
@@ -176,12 +177,20 @@ var Chat = (function (){
 
 		appendToChatLog: function (message) {
 			$('#chat-log').append('<div>[' + message.timestamp + '] ' + message.user + ': ' + message.text + '</div>');
+			$('#chat-log').animate({scrollTop: $('#chat-log').prop('scrollHeight')}, 500);
 			messages.push(message);
 		},
 
 		appendToUserList: function (user) {
 			$('#user-list').append('<div>' + user + '</div>');
 			users.push(user);
+		},
+
+		startPolling: function () {
+			fn.refreshChatLog();
+			fn.refreshUserList();
+
+			pollingTimeout = setTimeout(fn.startPolling, 1000);
 		}
 	};
 

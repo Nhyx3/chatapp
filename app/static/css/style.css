@@ -19,6 +19,7 @@
     border: 1px solid #e1e1e8;
     border-radius: 4px;
     margin-bottom: 14px;
+    overflow: auto;
 }
 
 #dialog {
