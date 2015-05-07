@@ -30,6 +30,9 @@ app.get('/messages', function (req, res) {
 });
 
 app.post('/messages', function (req, res) {
+    var date = new Date();
+
+    req.body.timestamp = date.toLocaleTimeString();
 	messages.push(req.body);
 	res.send(200);
 });

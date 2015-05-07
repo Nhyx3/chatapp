@@ -152,18 +152,15 @@ var Chat = (function (){
 				return;
 			}
 
+			text = fn.escapeHtml(text);
+
 			if ( ! user) {
 				user = currentUser;
 			}
 
-			var date = new Date();
-			var formattedTime = date.toLocaleTimeString();
-
-
 			var data = {
-				user:      user,
-				text:      text,
-				timestamp: formattedTime
+				user: user,
+				text: text
 			};
 			
 			$.ajax({
@@ -191,6 +188,21 @@ var Chat = (function (){
 			fn.refreshUserList();
 
 			pollingTimeout = setTimeout(fn.startPolling, 1000);
+		},
+
+		escapeHtml: function (string) {
+		  	var entityMap = {
+			    "&": "&amp;",
+			    "<": "&lt;",
+			    ">": "&gt;",
+			    '"': '&quot;',
+			    "'": '&#39;',
+			    "/": '&#x2F;'
+		    };
+
+		    return String(string).replace(/[&<>"'\/]/g, function (s) {
+		    	return entityMap[s];
+		    });
 		}
 	};
 
